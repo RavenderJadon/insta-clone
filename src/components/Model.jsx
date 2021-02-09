@@ -7,6 +7,11 @@ const Model = () => {
     register: true,
     login: false,
   });
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const formsToggle = () => {
     setState({
@@ -14,6 +19,17 @@ const Model = () => {
       register: !state.register,
       login: !state.login,
     });
+  };
+
+  const handleInput = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
+
+  console.log("inputs", inputs);
+
+  const registerUser = (e) => {
+    e.preventDefault();
+    console.log("hi");
   };
 
   const closeForm = (e) => {
@@ -30,7 +46,7 @@ const Model = () => {
           <div className="model__container">
             {state.register && (
               <div className="model__form">
-                <form>
+                <form onSubmit={registerUser}>
                   <div className="model__group">
                     <img src="/images/instagramLogo.png" alt="insta logo" />
                   </div>
@@ -40,8 +56,8 @@ const Model = () => {
                       name="username"
                       className="model__input"
                       placeholder="Username..."
-                      // onChange={handleInput}
-                      // value={inputs.username}
+                      onChange={handleInput}
+                      value={inputs.username}
                       required
                     />
                   </div>
@@ -51,8 +67,8 @@ const Model = () => {
                       name="email"
                       className="model__input"
                       placeholder="Email..."
-                      // onChange={handleInput}
-                      // value={inputs.email}
+                      onChange={handleInput}
+                      value={inputs.email}
                       required
                     />
                   </div>
@@ -62,8 +78,8 @@ const Model = () => {
                       name="password"
                       className="model__input"
                       placeholder="Create password..."
-                      // onChange={handleInput}
-                      // value={inputs.password}
+                      onChange={handleInput}
+                      value={inputs.password}
                       required
                     />
                   </div>
@@ -94,8 +110,8 @@ const Model = () => {
                       name="email"
                       className="model__input"
                       placeholder="Email..."
-                      // onChange={handleInput}
-                      // value={inputs.email}
+                      onChange={handleInput}
+                      value={inputs.email}
                       required
                     />
                   </div>
@@ -105,8 +121,8 @@ const Model = () => {
                       name="password"
                       className="model__input"
                       placeholder="Create password..."
-                      // onChange={handleInput}
-                      // value={inputs.password}
+                      onChange={handleInput}
+                      value={inputs.password}
                       required
                     />
                   </div>
