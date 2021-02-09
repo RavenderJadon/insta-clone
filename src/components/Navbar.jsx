@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ContextProvider } from "../Global/Context";
 import {
   FaSistrix,
   FaHome,
@@ -7,8 +9,10 @@ import {
 } from "react-icons/fa";
 
 const Navbar = () => {
+  const { model, openModal } = useContext(ContextProvider);
+  console.log("my model", model);
   const openForm = () => {
-    console.log("hi");
+    openModal();
   };
 
   return (
