@@ -29,7 +29,8 @@ const Context = (props) => {
   const login = async (user) => {
     const { email, password } = user;
     const response = await auth.signInWithEmailAndPassword(email, password);
-    console.log("response",response)
+    console.log("response",response);
+    setModel(false);
   }
 
   return (

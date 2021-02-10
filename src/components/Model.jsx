@@ -51,6 +51,22 @@ const Model = () => {
     e.preventDefault();
     console.log("inputs", inputs);
     register(inputs);
+    setInputs({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  const userLogin = (e) => {
+    e.preventDefault();
+    console.log("inputs", inputs);
+    login(inputs);
+    setInputs({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -115,7 +131,7 @@ const Model = () => {
             {!state.register && (
               <div style={{ display: hide }}>
                 <div className="model__form">
-                  <form>
+                  <form onSubmit={userLogin}>
                     <div className="model__group">
                       <img src="/images/instagramLogo.png" alt="insta logo" />
                     </div>
