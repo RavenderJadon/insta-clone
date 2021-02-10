@@ -66,7 +66,7 @@ const Model = () => {
       username: "",
       email: "",
       password: "",
-    });
+    }) ;
   };
 
   return (
