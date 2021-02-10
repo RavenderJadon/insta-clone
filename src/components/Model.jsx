@@ -3,6 +3,9 @@ import { ContextProvider } from "../Global/Context";
 
 const Model = () => {
   const { model, closeModel } = useContext(ContextProvider);
+  const [phoneModelState, setPhoneModelState] = useState(false);
+  const [hide, setHide] = useState("");
+
   const [state, setState] = useState({
     register: true,
     login: false,
@@ -37,6 +40,11 @@ const Model = () => {
     if (className === "model") {
       closeModel();
     }
+  };
+
+  const formsToggleWithPhoneNo = () => {
+    setPhoneModelState(true);
+    setHide("none");
   };
 
   return (
@@ -99,6 +107,54 @@ const Model = () => {
               </div>
             )}
             {!state.register && (
+              <div style={{ display: hide }}>
+                <div className="model__form">
+                  <form>
+                    <div className="model__group">
+                      <img src="/images/instagramLogo.png" alt="insta logo" />
+                    </div>
+                    <div className="model__group">
+                      <input
+                        type="email"
+                        name="email"
+                        className="model__input"
+                        placeholder="Email..."
+                        onChange={handleInput}
+                        value={inputs.email}
+                        required
+                      />
+                    </div>
+                    <div className="model__group">
+                      <input
+                        type="password"
+                        name="password"
+                        className="model__input"
+                        placeholder="Create password..."
+                        onChange={handleInput}
+                        value={inputs.password}
+                        required
+                      />
+                    </div>
+                    <div className="model__group">
+                      <input
+                        type="submit"
+                        value="Login"
+                        className="btn btn-smart"
+                      />
+                    </div>
+                    <div className="model__group">
+                      <span onClick={formsToggle}>Create a new account ? </span>
+                    </div>
+                    <div className="model__group">
+                      <span onClick={formsToggleWithPhoneNo}>
+                        Create account with Phone no.?{" "}
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+            {phoneModelState && (
               <div className="model__form">
                 <form>
                   <div className="model__group">
@@ -109,7 +165,7 @@ const Model = () => {
                       type="email"
                       name="email"
                       className="model__input"
-                      placeholder="Email..."
+                      placeholder="Phone Number..."
                       onChange={handleInput}
                       value={inputs.email}
                       required
