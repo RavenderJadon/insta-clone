@@ -9,10 +9,17 @@ import {
 } from "react-icons/fa";
 
 const Navbar = () => {
-  const { model, openModal } = useContext(ContextProvider);
+  const { model, openModal, usr, loader } = useContext(ContextProvider);
   console.log("my model", model);
   const openForm = () => {
     openModal();
+  };
+  const checkUser = () => {
+    return !loader && usr ? (
+      <li>{usr.displayName}/Logout</li>
+    ) : (
+      <li onClick={openForm}>Register/Login</li>
+    );
   };
 
   return (
@@ -41,7 +48,7 @@ const Navbar = () => {
         <li>
           <FaRegHeart className="navbar__icons" />
         </li>
-        <li onClick={openForm}>Register/Login</li>
+        {checkUser()}
       </div>
     </div>
   );
