@@ -26,16 +26,6 @@ function App() {
           <div>new</div>
         </span>
       </div>
-      <div>
-        <myComponent>
-          <div>
-            <img />
-          </div>
-        </myComponent>
-        <div>
-          <span onClick={() => alert("g")}>this</span>
-        </div>
-      </div>
     </Context>
   );
 }

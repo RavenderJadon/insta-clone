@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ContextProvider } from "../Global/Context";
 
 const Model = () => {
-  const { model, closeModel } = useContext(ContextProvider);
+  const { model, closeModel, register, login } = useContext(ContextProvider);
   const [phoneModelState, setPhoneModelState] = useState(false);
   const [hide, setHide] = useState("");
 
@@ -28,12 +28,7 @@ const Model = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  console.log("inputs", inputs);
-
-  const registerUser = (e) => {
-    e.preventDefault();
-    console.log("hi");
-  };
+  // console.log("inputs", inputs);
 
   const closeForm = (e) => {
     const className = e.target.getAttribute("class");
@@ -45,6 +40,17 @@ const Model = () => {
   const formsToggleWithPhoneNo = () => {
     setPhoneModelState(true);
     setHide("none");
+    setInputs({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  const registerUser = (e) => {
+    e.preventDefault();
+    console.log("inputs", inputs);
+    register(inputs);
   };
 
   return (
