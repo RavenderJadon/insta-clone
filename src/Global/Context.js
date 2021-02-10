@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { auth } from "../components/config";
 export const ContextProvider = createContext();
 
 const Context = (props) => {
   const [model, setModel] = useState(false);
+  const [usr, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   const openModal = () => {
     setModel(true);
@@ -18,7 +20,8 @@ const Context = (props) => {
     try {
       const response = await auth.createUserWithEmailAndPassword(
         email,
-        password,);
+        password
+      );
       response.user.updateProfile({ displayName: username });
       setModel(false);
     } catch (error) {
@@ -29,12 +32,22 @@ const Context = (props) => {
   const login = async (user) => {
     const { email, password } = user;
     const response = await auth.signInWithEmailAndPassword(email, password);
-    console.log("response",response);
+    console.log("response", response);
     setModel(false);
-  }
+  };
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+      setLoader(false);
+    });
+  }, []);
+  console.log("login User :", usr);
 
   return (
-    <ContextProvider.Provider value={{ model, openModal, closeModel, register, login }}>
+    <ContextProvider.Provider
+      value={{ model, openModal, closeModel, register, login, usr, loader }}
+    >
       {props.children}
     </ContextProvider.Provider>
   );
