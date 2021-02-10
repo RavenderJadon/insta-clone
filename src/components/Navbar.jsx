@@ -16,7 +16,9 @@ const Navbar = () => {
   };
   const checkUser = () => {
     return !loader && usr ? (
-      <li>{usr.displayName}/Logout</li>
+      <li>
+        {usr.displayName}/<span>Logout</span>
+      </li>
     ) : (
       <li onClick={openForm}>Register/Login</li>
     );

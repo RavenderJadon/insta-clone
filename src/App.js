@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Modal from "./components/Model";
 
 function App() {
-  const UseSelectNumber = (i) => {};
+
   return (
     <Context>
       <Navbar />
