@@ -36,6 +36,17 @@ const Context = (props) => {
     setModel(false);
   };
 
+  const logout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        setUser(null);
+      })
+      .catch((err) => {
+        console.log("err :", err);
+      });
+  };
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -46,7 +57,16 @@ const Context = (props) => {
 
   return (
     <ContextProvider.Provider
-      value={{ model, openModal, closeModel, register, login, usr, loader }}
+      value={{
+        model,
+        openModal,
+        closeModel,
+        register,
+        login,
+        usr,
+        loader,
+        logout,
+      }}
     >
       {props.children}
     </ContextProvider.Provider>

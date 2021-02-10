@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 const Navbar = () => {
-  const { model, openModal, usr, loader } = useContext(ContextProvider);
+  const { model, openModal, usr, loader, logout } = useContext(ContextProvider);
   console.log("my model", model);
   const openForm = () => {
     openModal();
@@ -17,11 +17,15 @@ const Navbar = () => {
   const checkUser = () => {
     return !loader && usr ? (
       <li>
-        {usr.displayName}/<span>Logout</span>
+        {usr.displayName}/<span onClick={userLogout}>Logout</span>
       </li>
     ) : (
       <li onClick={openForm}>Register/Login</li>
     );
+  };
+
+  const userLogout = () => {
+    logout();
   };
 
   return (
