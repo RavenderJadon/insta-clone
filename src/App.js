@@ -11,9 +11,9 @@ function App() {
       <Navbar />
       <div className="container">
       <Stories />
+      <Create />
       </div>
       <Modal />
-      <Create />
     </Context>
   );
 }
