@@ -161,3 +161,17 @@ body {
   font-size: 13px;
   cursor: pointer;
 }
+.container {
+  width: 100%;
+  padding: 0 200px;
+  margin-top: 80px;
+}
+.stories {
+  display: flex;
+  background: var(--white);
+  padding: 15px 10px;
+  width: 65%;
+  border-radius: 3px;
+  border: 1px solid #efefef;
+  overflow: hidden;
+}
