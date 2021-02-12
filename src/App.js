@@ -8,8 +8,10 @@ function App() {
   return (
     <Context>
       <Navbar />
-      <Modal />
+      <div className="container">
       <Stories />
+      </div>
+      <Modal />
     </Context>
   );
 }
