@@ -15,12 +15,16 @@ const Navbar = () => {
     openModal();
   };
   const checkUser = () => {
-    return !loader && usr ? (
-      <li>
-        {usr.displayName}/<span onClick={userLogout}>Logout</span>
-      </li>
+    return !loader ? (
+      !loader && usr ? (
+        <li>
+          {usr.displayName}/<span onClick={userLogout}>Logout</span>
+        </li>
+      ) : (
+        <li onClick={openForm}>Register/Login</li>
+      )
     ) : (
-      <li onClick={openForm}>Register/Login</li>
+      "..."
     );
   };
 
