@@ -1,14 +1,29 @@
+import { useState } from "react";
 import { FaCamera } from "react-icons/fa";
 
 const Create = () => {
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  console.log(title);
+
+  const handelImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const createPost = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="create">
-      <form>
+      <form onSubmit={createPost} >
         <div className="create__input">
           <input
             type="text"
             className="create__inputt"
             placeholder="Whats on your Mind..."
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
             required
           />
         </div>
@@ -17,7 +32,14 @@ const Create = () => {
             <label htmlFor="file">
               <FaCamera className="camera" />
             </label>
-            <input type="file" className="file" id="file" required />
+            <input
+              type="file"
+              className="file"
+              id="file"
+              required
+              onChange={handelImage}
+              name="filename"
+            />
           </div>
           <div className="create__second-b">
             <input type="submit" className="btn-sweet" value="Create" />
