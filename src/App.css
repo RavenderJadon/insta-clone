@@ -206,4 +206,26 @@ body {
   font-size: 11px;
   margin-top: 4px;
 }
+.create {
+  width: 65%;
+  margin: 15px 0;
+  background: var(--white);
+  padding: 10px;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+}
+
+.create__inputt {
+  width: 100%;
+  height: 40px;
+  padding: 0 13px;
+  border: 1px solid #efefef;
+  outline: none;
+  border-radius: 2px;
+}
+.create__second {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
 
