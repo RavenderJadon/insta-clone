@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaCamera } from "react-icons/fa";
+import { ContextProvider } from "../Global/Context";
 
 const Create = () => {
+  const { create } = useContext(ContextProvider);
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   console.log(title);
@@ -12,11 +14,14 @@ const Create = () => {
 
   const createPost = (e) => {
     e.preventDefault();
+    create({ title, image });
+    setTitle("");
+    setImage("");
   };
 
   return (
     <div className="create">
-      <form onSubmit={createPost} >
+      <form onSubmit={createPost}>
         <div className="create__input">
           <input
             type="text"
