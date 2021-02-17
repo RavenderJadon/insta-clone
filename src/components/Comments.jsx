@@ -33,7 +33,7 @@ const Comments = (props) => {
           <div className="comments__container-name">{comment.username}</div>
           <div className="comments__container-msg">{comment.comment}</div>
         </div>
-      ))} 
+      ))}
       <div className="comments__section">
         {!loader && usr ? (
           <form onSubmit={postComment}>
