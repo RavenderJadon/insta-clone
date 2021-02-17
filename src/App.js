@@ -5,6 +5,7 @@ import Modal from "./components/Model";
 import Stories from "./components/Stories";
 import Create from "./components/Create";
 import Posts from "./components/Posts";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Stories />
         <Create />
         <Posts />
+        <Sidebar />
       </div>
       <Modal />
     </Context>
