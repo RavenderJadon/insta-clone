@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ContextProvider } from "../Global/Context";
+import Comments from "./Comments";
 
 const Posts = () => {
   const { posts } = useContext(ContextProvider);
@@ -15,6 +16,7 @@ const Posts = () => {
           <div className="posts__img">
             <img src={post.image} alt={post.image} />
           </div>
+          <Comments />
         </div>
       ))}
     </div>
