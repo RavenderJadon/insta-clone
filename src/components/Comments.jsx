@@ -2,8 +2,18 @@ import React from "react";
 
 const Comments = () => {
   return (
-    <div>
-      <p>hi</p>
+    <div className="comments">
+      <div className="comments__container"></div>
+      <div className="comments__section">
+        <form>
+          <input
+            type="text"
+            className="comment__input"
+            placeholder="Add a comment.."
+            required
+          />
+        </form>
+      </div>
     </div>
   );
 };
