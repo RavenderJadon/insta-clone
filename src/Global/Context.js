@@ -80,6 +80,16 @@ const Context = (props) => {
     );
   };
 
+  const publishComment = (data) => {
+    const { comment, id } = data;
+    db.collection("posts").doc(id).collection("comments").add({
+      comment:comment,
+      username: usr.displayName,
+      currentTime:firebase.firestore.FieldValue.serverTimestamp(),
+
+    })
+  }
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -117,7 +127,8 @@ const Context = (props) => {
         loader,
         logout,
         create,
-        posts, 
+        posts,
+        publishComment,
       }}
     >
       {props.children}

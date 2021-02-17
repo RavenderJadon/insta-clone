@@ -1,18 +1,54 @@
-import React from "react";
+import { useContext, useState, useEffect } from "react";
+import { ContextProvider } from "../Global/Context";
+import { db } from "./config";
 
-const Comments = () => {
+const Comments = (props) => {
+  const { loader, usr, publishComment } = useContext(ContextProvider);
+  const [state, setState] = useState("");
+  const [comments, setComments] = useState([]);
+
+  const postComment = (e) => {
+    e.preventDefault();
+    publishComment({
+      id: props.id,
+      comment: state,
+    });
+    setState("");
+  };
+
+  useEffect(() => {
+    db.collection("posts")
+      .doc(props.id)
+      .collection("comments")
+      .orderBy("currentTime", "desc")
+      .onSnapshot((snp) => {
+        setComments(snp.docs.map((doc) => doc.data()));
+      });
+  }, []);
+
   return (
     <div className="comments">
-      <div className="comments__container"></div>
+      {comments.map((comment) => (
+        <div className="comments__container" key={comment.id}>
+          <div className="comments__container-name">{comment.username}</div>
+          <div className="comments__container-msg">{comment.comment}</div>
+        </div>
+      ))} 
       <div className="comments__section">
-        <form>
-          <input
-            type="text"
-            className="comment__input"
-            placeholder="Add a comment.."
-            required
-          />
-        </form>
+        {!loader && usr ? (
+          <form onSubmit={postComment}>
+            <input
+              type="text"
+              className="comment__input"
+              placeholder="Add a comment.."
+              onChange={(e) => setState(e.target.value)}
+              value={state}
+              required
+            />
+          </form>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

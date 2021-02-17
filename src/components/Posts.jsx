@@ -16,7 +16,7 @@ const Posts = () => {
           <div className="posts__img">
             <img src={post.image} alt={post.image} />
           </div>
-          <Comments />
+          <Comments id={post.id} />
         </div>
       ))}
     </div>
